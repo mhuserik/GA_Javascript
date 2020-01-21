@@ -1,0 +1,59 @@
+body {
+    text-align: center;
+}
+table {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+  }
+
+.parentform{
+    width: 100%; 
+    margin: auto;
+    margin-top: 5%;
+}
+.clearfix {
+    overflow: auto;
+    clear: both;
+}
+#toms {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+#inputform {
+    float: left;
+    width: 50%;
+}
+#outputform {
+    float: right;
+    width: 50%;
+}
+#maps {
+    margin-top: 15%;
+    margin-bottom: 3%;
+}
+#map {
+    width: 600px;
+    height: 300px;
+    margin: auto;
+}
+#reviewimage {
+    float: left;
+    width: 50%;
+    margin-left: 10%;
+}
+#reviewtext {
+    float: right;
+    width: 40%;
+    text-align: left;
+    margin-top: 10%;
+}
+
+
+

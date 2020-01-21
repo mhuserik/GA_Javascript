@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Unit9 Final Project</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/stylesheet.css">
+    </head>
+    <body>
+        <div>
+            <h1>Monk’s Cafe</h1>
+            <h3>“The Coffee Shop”</h3>
+                <img id="toms" src="./images/toms-restaurant.jpg" alt="hero image">
+        </div>
+
+        <div class="parentform">
+            <h1>Reservations</h1>
+                <div id="inputform">
+                    <h4>Make a Reservation</h4>
+                        <form>
+                            <label>Name</label>
+                            <input type="text" placeholder="Please Enter Your Name">
+                            <br>
+                            <label>Day</label>
+                            <input type="text" placeholder="Please Enter a date">
+                            <br>
+                            <button>Confirm Reservation</button>
+                        </form>
+                </div>
+
+            <div id="outputform">
+                <h4>Existing Reservations</h4>
+                    <table>
+                        <tr>
+                          <th>Name</th>
+                          <th>Day</th>
+                        </tr>
+                        <tr>
+                          <td>Client Name</td>
+                          <td>Reservation Date</td>
+                        </tr>
+                    </table>
+            </div>
+        </div>
+
+        <div class="clearfix" id="maps" >
+            <h1>Come Dine With Us</h1>
+            <div id="map"></div>
+        </div>
+
+        <div class="clearfix">
+            <h1>Customer Review</h1>
+                <div id="reviewimage">
+                    <img src="./images/jerry.jpg" alt="Jerry">
+                </div>    
+                <div id="reviewtext">
+                    <p>“Big lettuce, big carrots, tomatoes like volleyballs.”<br>
+                        — Jerry Seinfeld, on The BIG Salad</p>
+                </div>
+        </div>
+
+
+        <script src="./js/script.js"></script>
+        <script src="./js/jquery-3.0.0.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3hVkBCWY3QMnDUdl8JGUBulvcedHd-4M&callback=initMap"
+        type="text/javascript"></script>
+    </body>
+</html>
