@@ -1,3 +1,5 @@
+var reservationData = {};
+
 //Initialize Maps Api
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -110,62 +112,42 @@ firebase.initializeApp(firebaseConfig);
 // 2. Connect to your Firebase application using your reference URL
 var database = firebase.database();
 
- //3. Creating ObjectLiteral to be populated with user input. 
 
-//Need to focus on this target it's not working.  
-  $('#inputform').on('submit', function(e) {
-      // prevent the page from reloading.
-        e.preventDefault();
-      // grab user's unput from input field.
-        var userInput1 = $('#userInputName').val();
-        var userInput2 = $('#userInputDay').val();
-      // clear the inupt values on submit.
-        $('#uerInputName').val('');
-        $('#userInputDay').val('');
-      // create section in database for input.
-        var reservationReference = database.ref('reservations');
-      // use the set method to save data to the comments.
-        reservationReference.push({
-          name: userInput1,
-          date: userInput2
-        });
-  });
-// 3. Retrieve reservations data when page loads and when reservations are added/updated.
- function getReservations() {
-    database.ref('reservations').on('value', function (results) {
-      var allReservations = results.val();
-      var reservations = [];
-        for (var item in allReservations) {
-          var context = {
-          Date: allReservations[item].Date,
-          Name: allReservations[item].Name,
-          reservationId: item
-       };
-       var source = $('#reservation-template').html;
-       var template = Handlebars.compile(source);
-       var reservationListElement = template(context);
-       reservations.push(reservationListElement)
-     }
-     //remove all list items from DOM before appending list items. 
-     $('.reservationOutput').empty()
-     // append each comment to the list of comments in the DOM
-      for (var i in reservationOutput) {
-        $('.reservationOutput').append(comments[i])
-      }
-    }); 
-  }
+// set the day when an option is clicked on
+$('.reservation-day li').click(function() {
+  reservationData.day = $(this).text();
+});
 
-  //call the reservation function
-  getReservations();
-  $('.reservationOutput').on('click', 'delete', function(e){
-      var id = $(e.target).parent().data('id')
+// when clicked, the name data should be set
+// and all data should be sent to your database
+$('.reservations').on('submit', function(event) {
+  // prevent reloading
+  event.preventDefault();
 
-      //find comment that matches in DB. 
-      var reservationReference = database.ref('reservations/' + id)
+  // get name from input
+  reservationData.name = $('.reservation-name').val();
 
-      //Remove method will remove comment form DB. 
-      reservationReference.remove()
-  });
+  // push configured data object to database
+  database.ref('reservations').push(reservationData);
+});
+
+
+// on initial load and addition of each reservation update the view
+database.ref('reservations').on('child_added', function(snapshot) {
+  // grab element to hook to
+  var reservationList = $('.reservation-list');
+  // get data from database
+  var reservations = snapshot.val();
+  // get your template from your script tag
+  var source   = $("#reservation-template").html();
+  // compile template
+  var template = Handlebars.compile(source);
+  // pass data to template to be evaluated within handlebars
+  // as the template is created
+  var reservationTemplate = template(reservations);
+  // append created templated
+  reservationList.append(reservationTemplate);
+});
 
 
 
