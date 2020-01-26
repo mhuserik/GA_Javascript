@@ -14,33 +14,36 @@
                 <img id="toms" src="./images/toms-restaurant.jpg" alt="hero image">
         </div>
 
-        <div class="parentform">
+        <div class="parentform">    
             <h1>Reservations</h1>
                 <div id="inputform">
                     <h4>Make a Reservation</h4>
-                        <form>
+                        <form class="reservationForm">
                             <label>Name</label>
-                            <input type="text" placeholder="Please Enter Your Name">
-                            <br>
+                                <input id="userInputName" type="text" placeholder="Please Enter Your Name">
+                                <br>
                             <label>Day</label>
-                            <input type="text" placeholder="Please Enter a date">
-                            <br>
-                            <button>Confirm Reservation</button>
+                                <input id="userInputDay" type="text" placeholder="Please Enter a date">
+                                <br>
+                            <button id="reserveButton">Confirm Reservation</button>
                         </form>
                 </div>
 
-            <div id="outputform">
-                <h4>Existing Reservations</h4>
-                    <table>
+                <!-- Handlebar Implementation.  -->
+            <div id="outputform"> 
+                <script id='reservation-template' type='text/x-handlebars-template'>
+                    <h4>Existing Reservations</h4>
+                    <table data-id="{{reservationId}}">
                         <tr>
                           <th>Name</th>
                           <th>Day</th>
                         </tr>
                         <tr>
-                          <td>Client Name</td>
-                          <td>Reservation Date</td>
+                          <td>{{Name}}</td>
+                          <td>{{Date}}</td>
                         </tr>
                     </table>
+                </script>
             </div>
         </div>
 
@@ -61,6 +64,9 @@
         </div>
 
 
+        <!-- Firebase CDN -->
+        <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+        <script src="js/handlebars-v4.0.5.js"></script>
         <script src="./js/script.js"></script>
         <script src="./js/jquery-3.0.0.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3hVkBCWY3QMnDUdl8JGUBulvcedHd-4M&callback=initMap"
