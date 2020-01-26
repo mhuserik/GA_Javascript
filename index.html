@@ -9,26 +9,28 @@
         <link rel="stylesheet" href="./css/stylesheet.css">
     </head>
     <body>
-        <div>
+        <div class="pageTitle" id="one-edge-shadow">
             <h1>Monk’s Cafe</h1>
-            <h3>“The Coffee Shop”</h3>
-                <img id="toms" src="./images/toms-restaurant.jpg" alt="hero image">
+            <h3>“The Coffee Shop”</h3>  
         </div>
+
+        <img id="toms" src="./images/toms-restaurant.jpg" alt="hero image">
 
         <div class="parentform">    
             <h1>Reservations</h1>
                 <div id="inputform">
                     <h4>Make a Reservation</h4>
                         <form class="reservationForm">
-                            <label>Name</label>
-                                <input id="userInputName" type="text" placeholder="Please Enter Your Name">
+                            <label>Name:  </label>
+                                <input id="userInputName" type="text" placeholder="Name">
                                 <br>
-                            <label>Day</label>
-                                <input id="userInputDay" type="text" placeholder="Please Enter a date">
+                            <label>Date:  </label>
+                                <input id="userInputDay" type="text" placeholder="Reservation date">
                                 <br>
                             <button id="reserveButton">Confirm Reservation</button>
                         </form>
                 </div>
+        </div>
 
                 <!-- Handlebar Implementation.  -->
             <div class="reservationOutput"> 

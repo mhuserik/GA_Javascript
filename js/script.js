@@ -157,9 +157,18 @@ var database = firebase.database();
 
   //call the reservation function
   getReservations();
+  $('.reservationOutput').on('click', 'delete', function(e){
+      var id = $(e.target).parent().data('id')
+
+      //find comment that matches in DB. 
+      var reservationReference = database.ref('reservations/' + id)
+
+      //Remove method will remove comment form DB. 
+      reservationReference.remove()
+  });
 
 
-  
+
 
 
 
