@@ -5,6 +5,7 @@
         <title>Unit9 Final Project</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="./css/stylesheet.css">
     </head>
     <body>
@@ -30,7 +31,7 @@
                 </div>
 
                 <!-- Handlebar Implementation.  -->
-            <div id="outputform"> 
+            <div class="reservationOutput"> 
                 <script id='reservation-template' type='text/x-handlebars-template'>
                     <h4>Existing Reservations</h4>
                     <table data-id="{{reservationId}}">
@@ -39,8 +40,9 @@
                           <th>Day</th>
                         </tr>
                         <tr>
-                          <td>{{Name}}</td>
-                          <td>{{Date}}</td>
+                          <td id="Name">{{Name}}</td>
+                          <td id="Date">{{Date}}</td>
+                          <i class="fa fa-trash delete"></i>
                         </tr>
                     </table>
                 </script>

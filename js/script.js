@@ -111,8 +111,9 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
  //3. Creating ObjectLiteral to be populated with user input. 
-//Need to focus on this aspect 
-  $('#inputform').submit(function(e) {
+
+//Need to focus on this target it's not working.  
+  $('#inputform').on('submit', function(e) {
       // prevent the page from reloading.
         e.preventDefault();
       // grab user's unput from input field.
@@ -130,18 +131,35 @@ var database = firebase.database();
         });
   });
 // 3. Retrieve reservations data when page loads and when reservations are added/updated.
-/* function getReservations() {
-  database.ref('reservations').on('value', function (results) {
-    var allReservations = results.val();
-    var reservations = [];
-     for (var item in allReservations) {
-       var context = {
-         userInputDay: allReservations[item].userInputDay,
-         userInputName: allReservations[item].userInputName
-       }
+ function getReservations() {
+    database.ref('reservations').on('value', function (results) {
+      var allReservations = results.val();
+      var reservations = [];
+        for (var item in allReservations) {
+          var context = {
+          Date: allReservations[item].Date,
+          Name: allReservations[item].Name,
+          reservationId: item
+       };
+       var source = $('#reservation-template').html;
+       var template = Handlebars.compile(source);
+       var reservationListElement = template(context);
+       reservations.push(reservationListElement)
      }
-  } 
-} */
+     //remove all list items from DOM before appending list items. 
+     $('.reservationOutput').empty()
+     // append each comment to the list of comments in the DOM
+      for (var i in reservationOutput) {
+        $('.reservationOutput').append(comments[i])
+      }
+    }); 
+  }
+
+  //call the reservation function
+  getReservations();
+
+
+  
 
 
 
